@@ -1,4 +1,4 @@
-const mockFile = require('./mock/index');
+const mockFile = require('./mock');
 const pathToRegexp = require('path-to-regexp');
 const debug = console.log;
 const bodyParser = require('body-parser');
