@@ -5,10 +5,10 @@ import { Dispatch, AnyAction } from 'redux';
 import Link from 'umi/link';
 import { connect } from 'dva';
 import { StateType } from '@/models/login';
-import LoginFrom from './components/Login';
 import styles from './style.less';
 import { LoginParamsType } from '@/services/login';
 import { ConnectState } from '@/models/connect';
+import LoginFrom from './components/Login';
 
 const { Tab, UserName, Password, Mobile, Captcha, Submit } = LoginFrom;
 interface LoginProps {
@@ -43,10 +43,9 @@ const Login: React.FC<LoginProps> = props => {
       payload: { ...values, type },
     });
   };
-
   return (
     <div className={styles.main}>
-      <LoginFrom defaultActiveKey={type} onTabChange={setType} onSubmit={handleSubmit}>
+      <LoginFrom activeKey={type} onTabChange={setType} onSubmit={handleSubmit}>
         <Tab key="account" tab="账户密码登录">
           {status === 'error' && loginType === 'account' && !submitting && (
             <LoginMessage content="账户或密码错误（admin/ant.design）" />
@@ -54,7 +53,7 @@ const Login: React.FC<LoginProps> = props => {
 
           <UserName
             name="userName"
-            placeholder={`${'用户名'}: admin or user`}
+            placeholder="用户名: admin or user"
             rules={[
               {
                 required: true,
@@ -64,7 +63,7 @@ const Login: React.FC<LoginProps> = props => {
           />
           <Password
             name="password"
-            placeholder={`${'密码'}: ant.design`}
+            placeholder="密码: ant.design"
             rules={[
               {
                 required: true,
@@ -95,7 +94,7 @@ const Login: React.FC<LoginProps> = props => {
             name="captcha"
             placeholder="验证码"
             countDown={120}
-            getCaptchaButtonText="获取验证码"
+            getCaptchaButtonText=""
             getCaptchaSecondText="秒"
             rules={[
               {
@@ -113,7 +112,6 @@ const Login: React.FC<LoginProps> = props => {
             style={{
               float: 'right',
             }}
-            href=""
           >
             忘记密码
           </a>
