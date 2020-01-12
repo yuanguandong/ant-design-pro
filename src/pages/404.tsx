@@ -1,6 +1,6 @@
 import { Button, Result } from 'antd';
 import React from 'react';
-import router from 'umi/router';
+import { router } from 'umi';
 
 const NoFoundPage: React.FC<{}> = () => (
   <Result
